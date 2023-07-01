@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>React Basic Library</title>
+  <!-- react cdn -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <button id="btn_plus">+</button>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    console.log(React);
+    console.log(ReactDOM);
+
+    // 기존 프론트 
+ 
+    // const root = document.querySelector('#root');
+    // const btn_plus = document.querySelector('#btn_plus');
+
+    // let i = 0;
+
+    // root.innerHTML = '<p>init : 0</p>'
+    
+    // btn_plus.addEventListener('click', () => {
+    //   root.innerHTML = `<p>init : ${i++}</p>`;
+    // })
+
+    //------------------------------------------------------
+
+    // 컴포넌트 프론트엔드
+
+    // const component = {
+    //   message: 'init',
+    //   count: 0,
+    //   render() {
+    //     return `<p>${this.message} : ${this.count}</p>`;
+    //   }
+    // }
+
+    // function render(rootElement, component) {
+    //   rootElement.innerHTML = component.render();
+    // } 
+
+    // // 초기화
+    // render(document.querySelector('#root'), component);
+
+    // document.querySelector('#btn_plus').addEventListener('click', () => {
+    //   component.message = 'update';
+    //   component.count = component.count + 1;
+
+    //   render(document.querySelector('#root'), component);
+    // })
+
+    //----------------------------------------------------------
+
+    // react 
+
+    // p tag hello
+    // const Component = props => {
+    //   return React.createElement(
+    //     'p',
+    //     null, 
+    //     `${props.message} : ${props.count}`
+    //   );
+    // }
+
+    // ReactDOM.render(
+    //   React.createElement(Component, {message: 'init', count: 0}, null), 
+    //   document.querySelector('#root'));
+
+    // document.querySelector('#btn_plus').addEventListener('click', () => {
+    //   ReactDOM.render(
+    //   React.createElement(Component, 
+    //     {message: 'update', count: 10}, 
+    //     null
+    //   ), 
+    //   document.querySelector('#root'));
+    // })
+
+    // ------------------------------------------------------------
+    
+    // hook after
+    
+    // 정의
+    // class ClassComponent extends React.Component {
+    //   // render() 정의
+    //   render() {
+    //     return <div>Hello</div>;
+    //   }
+    // }
+
+    // // 사용
+    // ReactDOM.render(
+    //   <ClassComponent />,
+    //   document.querySelector('#root')
+    // )
+
+    //----------------------------------------------------
+
+    // function
+
+    // 정의1
+    function FunctionComponent() {
+      return <div>Hello</div>;
+    }
+
+    // 정의2
+    const FunctionComponent = () => {
+      return <div>Hello</div>;
+    }
+
+    // 사용
+    ReactDOM.render(
+      <FunctionComponent />,
+      document.querySelector('#root')
+    )
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Life Cycle</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <div>
+    <h2></h2>
+  </div>
+  <script type="text/babel">
+    console.log(React);
+    console.log(ReactDOM);
+
+    class App extends React.Component {
+      state = {
+        age: 6,
+      };
+
+      interval = null;
+      constructor(props) {
+        super(props);
+
+        console.log('constructor', props);
+      }
+
+      render() {
+       console.log('render');
+       return (
+        <div>
+          <h2>
+            Hello {this.props.name} - {this.state.age}  
+          </h2>
+        </div>
+       );
+      }
+      // 1. 생성 및 마운트
+      componentWillMount() {
+        console.log('componentWillMound');
+      }
+
+      componentDidMount(){
+        console.log('componentDidMound');
+        
+        this.interval = setInterval(() => {
+          console.log("setInterval");
+          this.setState(state => ({...state, age: state.age + 1}));
+        }, 1000);
+      }
+
+      // 2. props and state 변경
+      componentWillReceiveProps(nextProps) {
+        console.log("componentWillReceiveProps", nextProps);
+      }
+
+      shouldComponentUpdate(nextProps, nextState) {
+        console.log("shouldComponentUpdate", nextProps, nextState);
+
+        return false;
+      }
+
+      componentWillUpdate(nextProps, nextState) {
+        console.log("componentWillUpdate", nextProps, nextState);
+      }
+
+      componentDidUpdate(prevProps, prevState) {
+        console.log("componentDidUpdate", prevProps, prevState);
+      }
+
+      // 3. 컴포넌트 언마운트
+      componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+    }
+    
+    ReactDOM.render(
+      <App name="hifiv12"/>,
+      document.querySelector('#root') 
+    );
+  </script>
+</body>
+</html>
